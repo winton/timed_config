@@ -1,8 +1,8 @@
-unless defined?(GemTemplate::Gems)
+unless defined?(TimedConfig::Gems)
   
   require 'yaml'
   
-  module GemTemplate
+  module TimedConfig
     module Gems
       class <<self
         

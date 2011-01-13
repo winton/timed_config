@@ -1,36 +1,62 @@
-GemTemplate
+TimedConfig
 ===========
 
-A gem template for new projects.
+Starts a thread that loads a YAML config every X minutes
 
 Requirements
 ------------
 
 <pre>
-gem install stencil
+gem install timed_config
 </pre>
 
-Setup the template
-------------------
+Install
+-------
 
-You only have to do this once.
+### Rails 2
+
+#### config/environment.rb
 
 <pre>
-git clone git@github.com:winton/gem_template.git
-cd gem_template
-stencil
+config.gem 'acts_as_archive'
 </pre>
 
-Setup a new project
--------------------
+### Rails 3
 
-Do this for every new project.
+#### Gemfile
 
 <pre>
-mkdir my_project
-git init
-stencil gem_template
-rake rename
+gem 'acts_as_archive'
 </pre>
 
-The last command does a find-replace (gem\_template -> my\_project) on files and filenames.
+### Other
+
+<pre>
+require 'acts_as_archive'
+</pre>
+
+Starts by default
+-----------------
+
+<code>TimedConfig</code> will start automatically when you require it.
+
+If you are using Rails, it will try to find the config in <code>config/timed_config.yml</code>.
+
+By default, the refresh period is set to 1 minute.
+
+Accessing the config
+--------------------
+
+<pre>
+TimedConfig.config
+</pre>
+
+Changing defaults
+-----------------
+
+<pre>
+TimedConfig.period = 120 # change period to two minutes
+TimedConfig.path = "path/to/yaml.yml"
+</pre>
+
+The config will reload any time one of these settings change.

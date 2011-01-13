@@ -1,13 +1,10 @@
-name: gem_template
+name: timed_config
 version: 0.1.0
 authors:
-  -
-email:
-homepage:
-summary:
-description:
-dependencies:
-  -
-development_dependencies:
-  - rake
-  - rspec
+  - Winton Welsh
+email: mail@wintoni.us
+homepage: http://github.com/winton/timed_config
+summary: Starts a thread that loads a YAML config every X minutes
+description: Starts a thread that loads a YAML config every X minutes
+dependencies: null
+development_dependencies: null
