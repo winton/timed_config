@@ -4,7 +4,7 @@ authors:
   - Winton Welsh
 email: mail@wintoni.us
 homepage: http://github.com/winton/timed_config
-summary: Starts a thread that loads a YAML config every X minutes
-description: Starts a thread that loads a YAML config every X minutes
+summary: Load a YAML config every X minutes
+description: Load a YAML config every X minutes
 dependencies: null
 development_dependencies: null

@@ -1,7 +1,7 @@
 TimedConfig
 ===========
 
-Starts a thread that loads a YAML config every X minutes
+Load a YAML config every X minutes
 
 Requirements
 ------------
@@ -18,7 +18,7 @@ Install
 #### config/environment.rb
 
 <pre>
-config.gem 'acts_as_archive'
+config.gem 'timed_config'
 </pre>
 
 ### Rails 3
@@ -26,30 +26,21 @@ config.gem 'acts_as_archive'
 #### Gemfile
 
 <pre>
-gem 'acts_as_archive'
+gem 'timed_config'
 </pre>
 
 ### Other
 
 <pre>
-require 'acts_as_archive'
+require 'timed_config'
 </pre>
 
-Starts by default
------------------
+Defaults
+--------
 
-<code>TimedConfig</code> will start automatically when you require it.
-
-If you are using Rails, it will try to find the config in <code>config/timed_config.yml</code>.
+If you are using Rails, <code>TimedConfig</code> will try to locate the YAML config at <code>config/timed_config.yml</code>.
 
 By default, the refresh period is set to 1 minute.
-
-Accessing the config
---------------------
-
-<pre>
-TimedConfig.config
-</pre>
 
 Changing defaults
 -----------------
@@ -59,4 +50,11 @@ TimedConfig.period = 120 # change period to two minutes
 TimedConfig.path = "path/to/yaml.yml"
 </pre>
 
-The config will reload any time one of these settings change.
+The config will reload any time a setting changes.
+
+Accessing the config
+--------------------
+
+<pre>
+TimedConfig.config
+</pre>
