@@ -14,7 +14,20 @@ module TimedConfig
     def path=(p)
       @path = p
       reload true
+      @paths = [p]
       p
+    end
+
+    def paths
+      return @paths unless @paths.nil? || @paths.empty?
+      path.nil? ? [] : [path]
+    end
+
+    def paths=(p)
+      @paths = paths
+      @paths.push(p)
+      reload true
+      @paths
     end
     
     def period
@@ -29,8 +42,13 @@ module TimedConfig
     
     def reload(force=false)
       if force || !@last_load || Time.now >= (@last_load + period)
-        if TimedConfig.path && File.exists?(TimedConfig.path)
-          @config = YAML::load(File.open(TimedConfig.path))
+        p_array = paths
+
+        unless p_array.empty?
+          @config = {}
+          p_array.each do |p|
+            @config.merge!(YAML::load(File.open(p))) if File.exists? p
+          end
         else
           @config = nil
         end

@@ -80,12 +80,13 @@ describe TimedConfig::Gems do
       end
       
       it "should return proper values for Gems.dependencies" do
-        TimedConfig::Gems.dependencies.should == [ :rake, :mysql ]
+        TimedConfig::Gems.dependencies.should be == [ :rake, :mysql ]
         TimedConfig::Gems.development_dependencies.should == []
       end
       
       it "should return proper values for Gems.gemset_names" do
-        TimedConfig::Gems.gemset_names.should == [ :default, :rspec2, :solo ]
+        puts TimedConfig::Gems.gemset_names.class
+        TimedConfig::Gems.gemset_names.should =~ [ :default, :rspec2, :solo ]
       end
     end
     
@@ -125,12 +126,12 @@ describe TimedConfig::Gems do
       end
       
       it "should return proper values for Gems.dependencies" do
-        TimedConfig::Gems.dependencies.should == [ :rake, :mysql2 ]
+        TimedConfig::Gems.dependencies.should be == [ :rake, :mysql2 ]
         TimedConfig::Gems.development_dependencies.should == []
       end
       
       it "should return proper values for Gems.gemset_names" do
-        TimedConfig::Gems.gemset_names.should == [ :default, :rspec2, :solo ]
+        TimedConfig::Gems.gemset_names.should =~ [ :default, :rspec2, :solo ]
       end
     end
     
@@ -166,12 +167,12 @@ describe TimedConfig::Gems do
       end
       
       it "should return proper values for Gems.dependencies" do
-        TimedConfig::Gems.dependencies.should == [:rake]
+        TimedConfig::Gems.dependencies.should be == [:rake]
         TimedConfig::Gems.development_dependencies.should == []
       end
       
       it "should return proper values for Gems.gemset_names" do
-        TimedConfig::Gems.gemset_names.should == [ :default, :rspec2, :solo ]
+        TimedConfig::Gems.gemset_names.should =~ [ :default, :rspec2, :solo ]
       end
     end
     
@@ -181,8 +182,8 @@ describe TimedConfig::Gems do
       end
       
       it "should set everything to nil" do
-        TimedConfig::Gems.gemset.should == nil
-        TimedConfig::Gems.gemsets.should == nil
+        TimedConfig::Gems.gemset.should be == nil
+        TimedConfig::Gems.gemsets.should be == nil
         TimedConfig::Gems.versions.should == nil
       end
     end
@@ -224,14 +225,14 @@ describe TimedConfig::Gems do
     end
   
     it "should create methods from keys of @gemspec" do
-      TimedConfig::Gems.gemspec.name.should == "name"
-      TimedConfig::Gems.gemspec.version.should == "0.1.0"
-      TimedConfig::Gems.gemspec.authors.should == ["Author"]
-      TimedConfig::Gems.gemspec.email.should == "email@email.com"
-      TimedConfig::Gems.gemspec.homepage.should == "http://github.com/author/name"
-      TimedConfig::Gems.gemspec.summary.should == "Summary"
-      TimedConfig::Gems.gemspec.description.should == "Description"
-      TimedConfig::Gems.gemspec.dependencies.should == [
+      TimedConfig::Gems.gemspec.name.should be == "name"
+      TimedConfig::Gems.gemspec.version.should be == "0.1.0"
+      TimedConfig::Gems.gemspec.authors.should be == ["Author"]
+      TimedConfig::Gems.gemspec.email.should be == "email@email.com"
+      TimedConfig::Gems.gemspec.homepage.should be == "http://github.com/author/name"
+      TimedConfig::Gems.gemspec.summary.should be == "Summary"
+      TimedConfig::Gems.gemspec.description.should be == "Description"
+      TimedConfig::Gems.gemspec.dependencies.should be == [
         "rake",
         { "default" => ["mysql"] },
         { "rspec2" => [ "mysql2" ] }
