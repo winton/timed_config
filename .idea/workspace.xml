@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c08a7167-b8ad-48a1-a4c2-62d9f4313fac" name="Default" comment="" />
+    <list default="true" id="c08a7167-b8ad-48a1-a4c2-62d9f4313fac" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/timed_config.rb" afterPath="$PROJECT_DIR$/lib/timed_config.rb" />
+    </list>
     <ignored path="timed_config.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +28,7 @@
       <file leaf-file-name="timed_config.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/timed_config.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="7" selection-start="601" selection-end="601" vertical-scroll-proportion="0.6239737">
+            <state line="25" column="19" selection-start="418" selection-end="418" vertical-scroll-proportion="0.61576355">
               <folding />
             </state>
           </provider>
@@ -207,7 +210,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/timed_config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="7" selection-start="601" selection-end="601" vertical-scroll-proportion="0.6239737">
+        <state line="25" column="19" selection-start="418" selection-end="418" vertical-scroll-proportion="0.61576355">
           <folding />
         </state>
       </provider>
