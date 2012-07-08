@@ -23,9 +23,10 @@ module TimedConfig
       path.nil? ? [] : [path]
     end
 
-    def paths=(p)
-      @paths = paths
-      @paths.push(p)
+    def add_path(p)
+      @path = path if @path.nil?
+      @paths.push path unless path.nil? || @paths.include?(path)
+      @paths.push p unless @paths.include?(p)
       reload true
       @paths
     end
