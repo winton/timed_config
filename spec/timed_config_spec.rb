@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe TimedConfig do
+  config = "#{$root}/spec/fixtures/config.yml"
+  another_config = "#{$root}/spec/fixtures/another_config.yml"
   
   after(:all) do
-    FileUtils.rm "#{$root}/spec/fixtures/config.yml"
+    FileUtils.rm config
+    FileUtils.rm another_config
   end
   
   it "should not have set a config" do
@@ -31,5 +34,11 @@ describe TimedConfig do
   it "should update config in two seconds" do
     sleep 1
     TimedConfig.config.should == { 'test3' => 'test3' }
+  end
+
+  it "should include config from two files" do
+    write_to_fixture "test4: test4", another_config
+    TimedConfig.add_path another_config
+    TimedConfig.config.should == { 'test3' => 'test3', 'test4' => 'test4' }
   end
 end
