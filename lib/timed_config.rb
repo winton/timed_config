@@ -49,7 +49,7 @@ module TimedConfig
           @config = {}
           p_array.each do |p|
             yaml_hash = YAML::load(File.open p) if File.exists? p
-            @config.merge!(yaml_hash)
+            @config.merge!(yaml_hash) if yaml_hash.is_a?(Hash)
           end
         else
           @config = nil
