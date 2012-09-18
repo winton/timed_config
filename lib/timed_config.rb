@@ -2,7 +2,7 @@ require 'yaml'
 
 module TimedConfig
   class <<self
-    
+
     def config
       reload
     end
@@ -14,7 +14,21 @@ module TimedConfig
     def path=(p)
       @path = p
       reload true
+      @paths = [p]
       p
+    end
+
+    def paths
+      return @paths unless @paths.nil? || @paths.empty?
+      path.nil? ? [] : [path]
+    end
+
+    def add_path(p)
+      @paths = [] if @paths.nil?
+      @paths.push path unless path.nil? || @paths.include?(path)
+      @paths.push p unless @paths.include?(p)
+      reload true
+      @paths
     end
     
     def period
@@ -29,8 +43,14 @@ module TimedConfig
     
     def reload(force=false)
       if force || !@last_load || Time.now >= (@last_load + period)
-        if TimedConfig.path && File.exists?(TimedConfig.path)
-          @config = YAML::load(File.open(TimedConfig.path))
+        p_array = paths
+
+        unless p_array.empty?
+          @config = {}
+          p_array.each do |p|
+            yaml_hash = YAML::load(File.open p) if File.exists? p
+            @config.merge!(yaml_hash) if yaml_hash.is_a?(Hash)
+          end
         else
           @config = nil
         end
